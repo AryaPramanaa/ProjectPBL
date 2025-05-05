@@ -1,7 +1,7 @@
 @extends('layouts.dashboardFE')
 
 @section('content')
-    <section class="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-b from-teal-50 to-white">
+    <section class="w-full py-12 md:py-24 lg:py-45 bg-gradient-to-b from-teal-100 to-white border-b-4">
         <div class="container px-4 md:px-6">
             <div class="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
                 <div class="space-y-4">
@@ -22,7 +22,7 @@
                 </div>
                 <div class="flex justify-center">
                     <img
-                        src="https://placehold.co/500x500/teal/white?text=Mahasiswa+Magang"
+                        src="{{ asset('img/FE-bg.jpg') }}"
                         alt="Mahasiswa sedang magang"
                         class="rounded-lg object-cover"
                         width="500"
@@ -33,300 +33,305 @@
         </div>
     </section>
 
-    <section class="w-full py-12 md:py-24 bg-white">
-        <div class="container px-4 md:px-6">
-            <div class="flex flex-col items-center justify-center space-y-4 text-center">
-                <div class="space-y-2">
-                    <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                        Telusuri Lowongan Berdasarkan Jurusan
-                    </h2>
-                    <p class="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                        Temukan kesempatan yang disesuaikan dengan bidang studi Anda
-                    </p>
-                </div>
-            </div>
-            <div class="mx-auto mt-8 max-w-3xl">
-                <div class="w-full">
-                    <div class="flex border-b mb-8">
-                        <button class="px-4 py-2 font-medium text-sm border-b-2 border-teal-500 text-teal-500" id="tab-cs" onclick="switchTab('computer-science')">Teknik Informatika</button>
-                        <button class="px-4 py-2 font-medium text-sm" id="tab-eng" onclick="switchTab('engineering')">Teknik</button>
-                        <button class="px-4 py-2 font-medium text-sm" id="tab-bus" onclick="switchTab('business')">Bisnis</button>
-                        <button class="px-4 py-2 font-medium text-sm" id="tab-des" onclick="switchTab('design')">Desain</button>
-                    </div>
-                    
-                    <div id="computer-science-content" class="tab-content space-y-4">
-                        <div class="grid gap-4 md:grid-cols-2">
-                            @foreach([
-                                [
-                                    'title' => 'Magang Pengembang Perangkat Lunak',
-                                    'company' => 'TechCorp',
-                                    'location' => 'Remote',
-                                    'type' => 'Full-time',
-                                ],
-                                [
-                                    'title' => 'Magang Pengembangan Web',
-                                    'company' => 'WebSolutions',
-                                    'location' => 'Jakarta',
-                                    'type' => 'Part-time',
-                                ],
-                                [
-                                    'title' => 'Pengembang Aplikasi Mobile',
-                                    'company' => 'AppWorks',
-                                    'location' => 'Bandung',
-                                    'type' => 'Full-time',
-                                ],
-                                [
-                                    'title' => 'Magang Data Science',
-                                    'company' => 'DataMinds',
-                                    'location' => 'Surabaya',
-                                    'type' => 'Full-time',
-                                ]
-                            ] as $job)
-                                <div class="rounded-lg border bg-white text-gray-900 shadow-sm">
-                                    <div class="flex flex-col space-y-1.5 p-6">
-                                        <h3 class="text-lg font-semibold leading-none tracking-tight">{{ $job['title'] }}</h3>
-                                        <p class="text-sm text-gray-500">{{ $job['company'] }}</p>
-                                    </div>
-                                    <div class="p-6 pt-0">
-                                        <div class="flex items-center gap-2 text-sm">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
-                                                <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
-                                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                                            </svg>
-                                            <span>{{ $job['location'] }}</span>
-                                        </div>
-                                        <div class="flex items-center gap-2 text-sm mt-1">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
-                                                <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
-                                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                                            </svg>
-                                            <span>{{ $job['type'] }}</span>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center p-6 pt-0">
-                                        <a href="#" class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-gray-300 bg-white hover:bg-gray-100 h-9 px-4 py-2 w-full">
-                                            Lihat Detail
-                                        </a>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                        <div class="flex justify-center">
-                            <a href="#" class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-gray-300 bg-white hover:bg-gray-100 h-9 px-4 py-2 gap-1">
-                                Lihat Semua 
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
-                                    <path d="m9 18 6-6-6-6"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div id="engineering-content" class="tab-content space-y-4 hidden">
-                        <div class="grid gap-4 md:grid-cols-2">
-                            @foreach([
-                                [
-                                    'title' => 'Magang Teknik Mesin',
-                                    'company' => 'EngineerWorks',
-                                    'location' => 'Jakarta',
-                                    'type' => 'Full-time',
-                                ],
-                                [
-                                    'title' => 'Asisten Teknik Sipil',
-                                    'company' => 'BuildRight',
-                                    'location' => 'Bandung',
-                                    'type' => 'Part-time',
-                                ],
-                                [
-                                    'title' => 'Magang Teknik Elektro',
-                                    'company' => 'PowerTech',
-                                    'location' => 'Surabaya',
-                                    'type' => 'Full-time',
-                                ],
-                                [
-                                    'title' => 'Magang Teknik Penerbangan',
-                                    'company' => 'SkyWorks',
-                                    'location' => 'Jakarta',
-                                    'type' => 'Full-time',
-                                ]
-                            ] as $job)
-                                <div class="rounded-lg border bg-white text-gray-900 shadow-sm">
-                                    <div class="flex flex-col space-y-1.5 p-6">
-                                        <h3 class="text-lg font-semibold leading-none tracking-tight">{{ $job['title'] }}</h3>
-                                        <p class="text-sm text-gray-500">{{ $job['company'] }}</p>
-                                    </div>
-                                    <div class="p-6 pt-0">
-                                        <div class="flex items-center gap-2 text-sm">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
-                                                <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
-                                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                                            </svg>
-                                            <span>{{ $job['location'] }}</span>
-                                        </div>
-                                        <div class="flex items-center gap-2 text-sm mt-1">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
-                                                <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
-                                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                                            </svg>
-                                            <span>{{ $job['type'] }}</span>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center p-6 pt-0">
-                                        <a href="#" class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-gray-300 bg-white hover:bg-gray-100 h-9 px-4 py-2 w-full">
-                                            Lihat Detail
-                                        </a>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                        <div class="flex justify-center">
-                            <a href="#" class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-gray-300 bg-white hover:bg-gray-100 h-9 px-4 py-2 gap-1">
-                                Lihat Semua 
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
-                                    <path d="m9 18 6-6-6-6"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div id="business-content" class="tab-content space-y-4 hidden">
-                        <div class="grid gap-4 md:grid-cols-2">
-                            @foreach([
-                                [
-                                    'title' => 'Magang Marketing',
-                                    'company' => 'BrandBoost',
-                                    'location' => 'Jakarta',
-                                    'type' => 'Part-time',
-                                ],
-                                [
-                                    'title' => 'Magang Analis Keuangan',
-                                    'company' => 'CapitalGrowth',
-                                    'location' => 'Jakarta',
-                                    'type' => 'Full-time',
-                                ],
-                                [
-                                    'title' => 'Asisten HR',
-                                    'company' => 'PeopleFirst',
-                                    'location' => 'Bandung',
-                                    'type' => 'Part-time',
-                                ],
-                                [
-                                    'title' => 'Magang Business Development',
-                                    'company' => 'GrowthPartners',
-                                    'location' => 'Surabaya',
-                                    'type' => 'Full-time',
-                                ]
-                            ] as $job)
-                                <div class="rounded-lg border bg-white text-gray-900 shadow-sm">
-                                    <div class="flex flex-col space-y-1.5 p-6">
-                                        <h3 class="text-lg font-semibold leading-none tracking-tight">{{ $job['title'] }}</h3>
-                                        <p class="text-sm text-gray-500">{{ $job['company'] }}</p>
-                                    </div>
-                                    <div class="p-6 pt-0">
-                                        <div class="flex items-center gap-2 text-sm">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
-                                                <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
-                                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                                            </svg>
-                                            <span>{{ $job['location'] }}</span>
-                                        </div>
-                                        <div class="flex items-center gap-2 text-sm mt-1">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
-                                                <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
-                                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                                            </svg>
-                                            <span>{{ $job['type'] }}</span>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center p-6 pt-0">
-                                        <a href="#" class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-gray-300 bg-white hover:bg-gray-100 h-9 px-4 py-2 w-full">
-                                            Lihat Detail
-                                        </a>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                        <div class="flex justify-center">
-                            <a href="#" class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-gray-300 bg-white hover:bg-gray-100 h-9 px-4 py-2 gap-1">
-                                Lihat Semua 
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
-                                    <path d="m9 18 6-6-6-6"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div id="design-content" class="tab-content space-y-4 hidden">
-                        <div class="grid gap-4 md:grid-cols-2">
-                            @foreach([
-                                [
-                                    'title' => 'Magang UI/UX Design',
-                                    'company' => 'DesignLab',
-                                    'location' => 'Remote',
-                                    'type' => 'Part-time',
-                                ],
-                                [
-                                    'title' => 'Magang Desain Grafis',
-                                    'company' => 'CreativeStudio',
-                                    'location' => 'Jakarta',
-                                    'type' => 'Full-time',
-                                ],
-                                [
-                                    'title' => 'Magang Desain Produk',
-                                    'company' => 'InnovateDesign',
-                                    'location' => 'Bandung',
-                                    'type' => 'Full-time',
-                                ],
-                                [
-                                    'title' => 'Magang Motion Graphics',
-                                    'company' => 'VisualWorks',
-                                    'location' => 'Surabaya',
-                                    'type' => 'Part-time',
-                                ]
-                            ] as $job)
-                                <div class="rounded-lg border bg-white text-gray-900 shadow-sm">
-                                    <div class="flex flex-col space-y-1.5 p-6">
-                                        <h3 class="text-lg font-semibold leading-none tracking-tight">{{ $job['title'] }}</h3>
-                                        <p class="text-sm text-gray-500">{{ $job['company'] }}</p>
-                                    </div>
-                                    <div class="p-6 pt-0">
-                                        <div class="flex items-center gap-2 text-sm">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
-                                                <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
-                                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                                            </svg>
-                                            <span>{{ $job['location'] }}</span>
-                                        </div>
-                                        <div class="flex items-center gap-2 text-sm mt-1">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
-                                                <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
-                                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                                            </svg>
-                                            <span>{{ $job['type'] }}</span>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center p-6 pt-0">
-                                        <a href="#" class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-gray-300 bg-white hover:bg-gray-100 h-9 px-4 py-2 w-full">
-                                            Lihat Detail
-                                        </a>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                        <div class="flex justify-center">
-                            <a href="#" class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-gray-300 bg-white hover:bg-gray-100 h-9 px-4 py-2 gap-1">
-                                Lihat Semua 
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
-                                    <path d="m9 18 6-6-6-6"></path>
-                                </svg>
-                            </a>
-                        </div>
+    <div
+    data-aos="fade-up"
+    data-aos-duration="3000">
+        <section class="w-full py-12 md:py-24 bg-white border-b-4">
+            <div class="container px-4 md:px-6">
+                <div class="flex flex-col items-center justify-center space-y-4 text-center">
+                    <div class="space-y-2">
+                        <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                            Telusuri Lowongan Berdasarkan Jurusan
+                        </h2>
+                        <p class="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                            Temukan kesempatan yang disesuaikan dengan bidang studi Anda
+                        </p>
                     </div>
                 </div>
+                <div class="mx-auto mt-8 max-w-3xl">
+                    <div class="w-full">
+                        <div class="flex border-b mb-8">
+                            <button class="px-4 py-2 font-medium text-sm border-b-2 border-teal-500 text-teal-500" id="tab-cs" onclick="switchTab('computer-science')">Teknik Informatika</button>
+                            <button class="px-4 py-2 font-medium text-sm" id="tab-eng" onclick="switchTab('engineering')">Teknik</button>
+                            <button class="px-4 py-2 font-medium text-sm" id="tab-bus" onclick="switchTab('business')">Bisnis</button>
+                            <button class="px-4 py-2 font-medium text-sm" id="tab-des" onclick="switchTab('design')">Desain</button>
+                        </div>
+                        
+                        <div id="computer-science-content" class="tab-content space-y-4">
+                            <div class="grid gap-4 md:grid-cols-2">
+                                @foreach([
+                                    [
+                                        'title' => 'Magang Pengembang Perangkat Lunak',
+                                        'company' => 'TechCorp',
+                                        'location' => 'Remote',
+                                        'type' => 'Full-time',
+                                    ],
+                                    [
+                                        'title' => 'Magang Pengembangan Web',
+                                        'company' => 'WebSolutions',
+                                        'location' => 'Jakarta',
+                                        'type' => 'Part-time',
+                                    ],
+                                    [
+                                        'title' => 'Pengembang Aplikasi Mobile',
+                                        'company' => 'AppWorks',
+                                        'location' => 'Bandung',
+                                        'type' => 'Full-time',
+                                    ],
+                                    [
+                                        'title' => 'Magang Data Science',
+                                        'company' => 'DataMinds',
+                                        'location' => 'Surabaya',
+                                        'type' => 'Full-time',
+                                    ]
+                                ] as $job)
+                                    <div class="rounded-lg border bg-white text-gray-900 shadow-sm">
+                                        <div class="flex flex-col space-y-1.5 p-6">
+                                            <h3 class="text-lg font-semibold leading-none tracking-tight">{{ $job['title'] }}</h3>
+                                            <p class="text-sm text-gray-500">{{ $job['company'] }}</p>
+                                        </div>
+                                        <div class="p-6 pt-0">
+                                            <div class="flex items-center gap-2 text-sm">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+                                                    <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
+                                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                                </svg>
+                                                <span>{{ $job['location'] }}</span>
+                                            </div>
+                                            <div class="flex items-center gap-2 text-sm mt-1">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+                                                    <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
+                                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                                </svg>
+                                                <span>{{ $job['type'] }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center p-6 pt-0">
+                                            <a href="#" class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-gray-300 bg-white hover:bg-gray-100 h-9 px-4 py-2 w-full">
+                                                Lihat Detail
+                                            </a>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                            <div class="flex justify-center">
+                                <a href="#" class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-gray-300 bg-white hover:bg-gray-100 h-9 px-4 py-2 gap-1">
+                                    Lihat Semua 
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+                                        <path d="m9 18 6-6-6-6"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div id="engineering-content" class="tab-content space-y-4 hidden">
+                            <div class="grid gap-4 md:grid-cols-2">
+                                @foreach([
+                                    [
+                                        'title' => 'Magang Teknik Mesin',
+                                        'company' => 'EngineerWorks',
+                                        'location' => 'Jakarta',
+                                        'type' => 'Full-time',
+                                    ],
+                                    [
+                                        'title' => 'Asisten Teknik Sipil',
+                                        'company' => 'BuildRight',
+                                        'location' => 'Bandung',
+                                        'type' => 'Part-time',
+                                    ],
+                                    [
+                                        'title' => 'Magang Teknik Elektro',
+                                        'company' => 'PowerTech',
+                                        'location' => 'Surabaya',
+                                        'type' => 'Full-time',
+                                    ],
+                                    [
+                                        'title' => 'Magang Teknik Penerbangan',
+                                        'company' => 'SkyWorks',
+                                        'location' => 'Jakarta',
+                                        'type' => 'Full-time',
+                                    ]
+                                ] as $job)
+                                    <div class="rounded-lg border bg-white text-gray-900 shadow-sm">
+                                        <div class="flex flex-col space-y-1.5 p-6">
+                                            <h3 class="text-lg font-semibold leading-none tracking-tight">{{ $job['title'] }}</h3>
+                                            <p class="text-sm text-gray-500">{{ $job['company'] }}</p>
+                                        </div>
+                                        <div class="p-6 pt-0">
+                                            <div class="flex items-center gap-2 text-sm">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+                                                    <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
+                                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                                </svg>
+                                                <span>{{ $job['location'] }}</span>
+                                            </div>
+                                            <div class="flex items-center gap-2 text-sm mt-1">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+                                                    <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
+                                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                                </svg>
+                                                <span>{{ $job['type'] }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center p-6 pt-0">
+                                            <a href="#" class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-gray-300 bg-white hover:bg-gray-100 h-9 px-4 py-2 w-full">
+                                                Lihat Detail
+                                            </a>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                            <div class="flex justify-center">
+                                <a href="#" class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-gray-300 bg-white hover:bg-gray-100 h-9 px-4 py-2 gap-1">
+                                    Lihat Semua 
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+                                        <path d="m9 18 6-6-6-6"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div id="business-content" class="tab-content space-y-4 hidden">
+                            <div class="grid gap-4 md:grid-cols-2">
+                                @foreach([
+                                    [
+                                        'title' => 'Magang Marketing',
+                                        'company' => 'BrandBoost',
+                                        'location' => 'Jakarta',
+                                        'type' => 'Part-time',
+                                    ],
+                                    [
+                                        'title' => 'Magang Analis Keuangan',
+                                        'company' => 'CapitalGrowth',
+                                        'location' => 'Jakarta',
+                                        'type' => 'Full-time',
+                                    ],
+                                    [
+                                        'title' => 'Asisten HR',
+                                        'company' => 'PeopleFirst',
+                                        'location' => 'Bandung',
+                                        'type' => 'Part-time',
+                                    ],
+                                    [
+                                        'title' => 'Magang Business Development',
+                                        'company' => 'GrowthPartners',
+                                        'location' => 'Surabaya',
+                                        'type' => 'Full-time',
+                                    ]
+                                ] as $job)
+                                    <div class="rounded-lg border bg-white text-gray-900 shadow-sm">
+                                        <div class="flex flex-col space-y-1.5 p-6">
+                                            <h3 class="text-lg font-semibold leading-none tracking-tight">{{ $job['title'] }}</h3>
+                                            <p class="text-sm text-gray-500">{{ $job['company'] }}</p>
+                                        </div>
+                                        <div class="p-6 pt-0">
+                                            <div class="flex items-center gap-2 text-sm">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+                                                    <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
+                                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                                </svg>
+                                                <span>{{ $job['location'] }}</span>
+                                            </div>
+                                            <div class="flex items-center gap-2 text-sm mt-1">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+                                                    <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
+                                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                                </svg>
+                                                <span>{{ $job['type'] }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center p-6 pt-0">
+                                            <a href="#" class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-gray-300 bg-white hover:bg-gray-100 h-9 px-4 py-2 w-full">
+                                                Lihat Detail
+                                            </a>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                            <div class="flex justify-center">
+                                <a href="#" class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-gray-300 bg-white hover:bg-gray-100 h-9 px-4 py-2 gap-1">
+                                    Lihat Semua 
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+                                        <path d="m9 18 6-6-6-6"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div id="design-content" class="tab-content space-y-4 hidden">
+                            <div class="grid gap-4 md:grid-cols-2">
+                                @foreach([
+                                    [
+                                        'title' => 'Magang UI/UX Design',
+                                        'company' => 'DesignLab',
+                                        'location' => 'Remote',
+                                        'type' => 'Part-time',
+                                    ],
+                                    [
+                                        'title' => 'Magang Desain Grafis',
+                                        'company' => 'CreativeStudio',
+                                        'location' => 'Jakarta',
+                                        'type' => 'Full-time',
+                                    ],
+                                    [
+                                        'title' => 'Magang Desain Produk',
+                                        'company' => 'InnovateDesign',
+                                        'location' => 'Bandung',
+                                        'type' => 'Full-time',
+                                    ],
+                                    [
+                                        'title' => 'Magang Motion Graphics',
+                                        'company' => 'VisualWorks',
+                                        'location' => 'Surabaya',
+                                        'type' => 'Part-time',
+                                    ]
+                                ] as $job)
+                                    <div class="rounded-lg border bg-white text-gray-900 shadow-sm">
+                                        <div class="flex flex-col space-y-1.5 p-6">
+                                            <h3 class="text-lg font-semibold leading-none tracking-tight">{{ $job['title'] }}</h3>
+                                            <p class="text-sm text-gray-500">{{ $job['company'] }}</p>
+                                        </div>
+                                        <div class="p-6 pt-0">
+                                            <div class="flex items-center gap-2 text-sm">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+                                                    <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
+                                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                                </svg>
+                                                <span>{{ $job['location'] }}</span>
+                                            </div>
+                                            <div class="flex items-center gap-2 text-sm mt-1">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+                                                    <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
+                                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                                </svg>
+                                                <span>{{ $job['type'] }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center p-6 pt-0">
+                                            <a href="#" class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-gray-300 bg-white hover:bg-gray-100 h-9 px-4 py-2 w-full">
+                                                Lihat Detail
+                                            </a>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                            <div class="flex justify-center">
+                                <a href="#" class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-gray-300 bg-white hover:bg-gray-100 h-9 px-4 py-2 gap-1">
+                                    Lihat Semua 
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+                                        <path d="m9 18 6-6-6-6"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
+    
 
-    <section class="w-full py-12 md:py-24 bg-gray-50">
+    <section class="w-full py-12 md:py-24 bg-gray-50 border-b-4">
         <div class="container px-4 md:px-6">
             <div class="flex flex-col items-center justify-center space-y-4 text-center">
                 <div class="space-y-2">
@@ -393,7 +398,7 @@
         </div>
     </section>
 
-    <section class="w-full py-12 md:py-24 bg-teal-500 text-white">
+    <section class="w-full py-12 md:py-24 bg-teal-500 text-white border-b--4">
         <div class="container px-4 md:px-6">
             <div class="flex flex-col items-center justify-center space-y-4 text-center">
                 <div class="space-y-2">

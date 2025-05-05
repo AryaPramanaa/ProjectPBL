@@ -6,14 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login - Sistem Manajemen Magang</title>
     
+    
+
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    @vite('resources/css/app.css')
+
     
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="{{ asset('js/lucide.js') }}"></script>
+    <script>lucide.createIcons();</script>
     
     <style>
         body {
@@ -79,19 +85,19 @@
             
             <div class="mt-6">
                 <div class="flex w-full rounded-md border border-gray-200 dark:border-gray-700">
-                    <button id="tab-student" class="flex-1 rounded-l-md px-3 py-2 text-center text-sm font-medium transition-colors hover:bg-gray-100 dark:hover:bg-gray-700 bg-gray-100 dark:bg-gray-700">
+                    <button id="tab-student" class="flex-1 rounded-l-md px-3 py-2 text-center text-sm font-medium transition-colors hover:bg-gray-100 dark:hover:bg-gray-700 bg-gray-100 dark:bg-gray-700 text-slate-900">
                         <div class="flex items-center justify-center gap-2">
                             <i data-lucide="graduation-cap" class="h-4 w-4"></i>
                             <span class="hidden sm:inline">Mahasiswa</span>
                         </div>
                     </button>
-                    <button id="tab-company" class="flex-1 px-3 py-2 text-center text-sm font-medium transition-colors hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <button id="tab-company" class="flex-1 px-3 py-2 text-center text-sm font-medium transition-colors hover:bg-gray-100 dark:hover:bg-gray-700 text-slate-900">
                         <div class="flex items-center justify-center gap-2">
                             <i data-lucide="building-2" class="h-4 w-4"></i>
                             <span class="hidden sm:inline">Perusahaan</span>
                         </div>
                     </button>
-                    <button id="tab-staff" class="flex-1 rounded-r-md px-3 py-2 text-center text-sm font-medium transition-colors hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <button id="tab-staff" class="flex-1 rounded-r-md px-3 py-2 text-center text-sm font-medium transition-colors hover:bg-gray-100 dark:hover:bg-gray-700 text-slate-900">
                         <div class="flex items-center justify-center gap-2">
                             <i data-lucide="users" class="h-4 w-4"></i>
                             <span class="hidden sm:inline">Staf</span>
@@ -103,17 +109,16 @@
                     <!-- Unified Login Form (works for all roles) -->
                     <form id="form-student" method="POST" action="{{ route('login') }}" class="space-y-4">
                         @csrf
-                        
                         <div class="space-y-2">
                             <label for="input_type" id="label_input" class="text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
                             <input id="input_type" name="input_type" type="text" placeholder="Masukkan Email atau NIM Anda" required 
-                                class="flex h-10 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-50 dark:focus:ring-primary"
+                                class="flex h-10 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm placeholder:text-gray-400 hover:shadow-lg text-slate-900 active:bg-white active:text-slate-900"   
                                 value="{{ old('input_type') }}" autofocus>
                         </div>
                         
                         <div class="space-y-2">
                             <div class="flex items-center justify-between">
-                                <label for="password" class="text-sm font-medium text-gray-700 dark:text-gray-300">Password</label>
+                                <label for="password" class="text-sm font-medium text-gray-700 dark:text-gray-300 ">Password</label>
                                 @if (Route::has('password.request'))
                                 <a href="{{ route('password.request') }}" class="text-xs text-black hover:underline">
                                     Lupa Password?
@@ -121,15 +126,15 @@
                                 @endif
                             </div>
                             <input id="password" name="password" type="password" placeholder="••••••••" required 
-                                class="flex h-10 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-50 dark:focus:ring-primary">
+                                class="flex h-10 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm placeholder:text-gray-400 text-slate-900  hover:shadow-lg  active:bg-white active:text-slate-900">
                         </div>
                         
                         <div class="flex items-center space-x-2">
-                            <input type="checkbox" id="remember" name="remember" class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary dark:border-gray-700 dark:bg-gray-900">
-                            <label for="remember" class="text-sm text-gray-600 dark:text-gray-400">Ingat saya</label>
+                            <input type="checkbox" id="remember" name="remember" class="h-4 w-4 rounded border-gray-300 bg-white">
+                            <label for="remember" class="text-sm text-gray-600 ">Ingat saya</label>
                         </div>
                         
-                        <button type="submit" id="login-button" class="inline-flex w-full items-center justify-center rounded-md bg-black px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-50">
+                        <button type="submit" id="login-button" class="inline-flex w-full items-center justify-center rounded-md bg-slate-700 hover:bg-slate-800 active:bg-slate-950 px-4 py-2 text-sm font-medium hover:shadow-xl">
                             Login sebagai Mahasiswa
                         </button>
                     </form>

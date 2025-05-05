@@ -1,24 +1,32 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\MahasiswaController;
 
 Route::get('/', function () {
     return view('frontend.home');
 })->name('home');
 
-// Route::get('/mahasiswa', function () {
-//     return view('backend.mahasiswa_coba');
-// })->name('home');
-
+// Mahasiswa
 // Route::get('/dashboard', function () {
-//     return view('dashboard');
+//     return view('layouts.dashboardBE');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/dashboard', function () {
-    return view('layouts.dashboardBE');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/pendaftaranPKL', [MahasiswaController::class, 'index']);
+// Route::get('/C_PendaftaranPKL',[MahasiswaController::class,'create']);
 
+Route::get('/dashboard',[MahasiswaController::class,'getData'])->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::controller(MahasiswaController::class)->group(function(){
+    Route::get('/pendaftaranPKL','index');
+    Route::get('/C_PendaftaranPKL','create');
+});
+
+// endMahasiswa
+
+
+// login
 Route::get('/login2', function(){
     return view('auth.login-asli');
 });
@@ -30,3 +38,4 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+//end login
