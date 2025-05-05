@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem Informasi Magang</title>
+    <title>Sistem Informasi Magang mahasiswa</title>
 
     <meta name="description" content="Temukan kesempatan magang yang sesuai dengan jurusan dan tujuan karir Anda">
 
